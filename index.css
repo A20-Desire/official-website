@@ -1,0 +1,603 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+@import "tailwindcss";
+@import './styles/design-tokens.css';
+@import './styles/desven-tokens.css';
+
+/* Global stylesheet — imports design tokens and Tailwind layers */
+
+@theme {
+  /* Primary Blues */
+  --color-primary-50: #f3f7ff;
+  --color-primary-100: #162864;
+  --color-primary-200: #1f3a7a;
+  --color-primary-300: #005db3;
+  --color-primary-400: #0093ff;
+  --color-primary-900: #07082d;
+  --color-primary-default: #0c0c44;
+
+  /* Accent & UI Colors */
+  --color-accent: #0093ff;
+  --color-cta: #0093ff;
+  --color-card: #ffffff;
+  --color-decor: #f3f7ff;
+  --color-muted: #5b6487;
+  --color-muted-light: #aab3cf;
+  --color-ink: #0c0c44;
+
+  /* Request Quote Section */
+  --color-request-bg: #0b3bff;
+  --color-request-label: #5c6278;
+
+  /* Typography */
+  --font-brand: "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif";
+
+  /* Border Radius */
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* Box Shadows */
+  --shadow-brand-sm: 0 4px 12px rgba(3, 6, 50, 0.06);
+  --shadow-brand-md: 0 10px 30px rgba(3, 6, 50, 0.12);
+}
+
+/* Utility class for Alfa Slab One font */
+
+.alfa-slab-one-regular {
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body {
+  font-family: "Alfa Slab One", serif;
+}
+
+
+
+/* ... rest of your custom @layer components styles ... */
+
+:root {
+  /* System UI stack for consistent typography */
+  --project-font: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+/* Basic resets + default font */
+html, body, #root {
+  height: 100%;
+}
+body {
+  font-family: var(--project-font);
+  background-color: var(--color-surface-subtle);
+  color: var(--color-text);
+}
+
+a {
+  color: var(--color-brand);
+}
+
+a:hover {
+  color: var(--color-brand-soft);
+}
+
+@keyframes slide-up-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer components {
+  .eyebrow {
+    font-family: var(--project-font);
+    font-weight: 600;
+    font-size: 0.8125rem; /* 13px */
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--color-brand-accent-light);
+  }
+
+  .heading-hero {
+    font-family: var(--project-font);
+    font-weight: 700;
+    font-size: clamp(2.4rem, 4.8vw, 3.2rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+  }
+
+  .heading-section {
+    font-family: var(--project-font);
+    font-weight: 700;
+    font-size: clamp(2.25rem, 4vw, 2.875rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .heading-card {
+    font-family: var(--project-font);
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 1.35;
+  }
+
+  .body-lead {
+    font-family: var(--project-font);
+    font-size: clamp(1.0625rem, 2.4vw, 1.25rem);
+    line-height: 1.65;
+    color: var(--color-muted);
+  }
+
+  .body-base {
+    font-family: var(--project-font);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+
+  .body-small {
+    font-family: var(--project-font);
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--color-muted);
+  }
+
+  .stat-value {
+    font-family: var(--project-font);
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 1.1;
+    color: var(--color-brand-accent);
+  }
+
+  .stat-label {
+    font-family: var(--project-font);
+    font-size: 0.875rem;
+    color: var(--color-muted);
+  }
+
+  .btn-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    padding: 0.80rem 2.4rem;
+    border-radius: 999px;
+    font-family: var(--project-font);
+    font-size: 0.80rem;
+    font-weight: 600;
+    background: var(--color-brand-accent);
+    color: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+    transition: background-color 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+  }
+
+  .btn-cta:hover {
+    background: var(--color-brand-accent);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .btn-cta:focus-visible {
+    outline: 2px solid var(--color-brand-accent-light);
+    outline-offset: 3px;
+  }
+
+  .form-label {
+    font-family: var(--project-font);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .badge-pill {
+    font-family: var(--project-font);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slide-up-fade 0.85s ease forwards;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-up {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+  }
+
+  .reveal-up-delay-1 {
+    animation-delay: 0.12s;
+  }
+
+  .reveal-up-delay-5 {
+    animation-delay: 0.6s;
+  }
+
+  .reveal-up-delay-2 {
+    animation-delay: 0.24s;
+  }
+
+  .reveal-up-delay-3 {
+    animation-delay: 0.36s;
+  }
+
+  .reveal-up-delay-4 {
+    animation-delay: 0.48s;
+  }
+
+  .text-gradient-hero {
+    background-image: linear-gradient(120deg, rgba(255, 255, 255, 0.92) 0%, rgba(91, 193, 255, 0.7) 55%, rgba(255, 255, 255, 0.2) 100%);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  @supports not (-webkit-background-clip: text) {
+    .text-gradient-hero {
+      color: rgba(255, 255, 255, 0.96);
+    }
+  }
+
+  .request-quote-section {
+    position: relative;
+    /* layout variables to drive wave + asset alignment */
+   --rq-wave-height: 44rem; /* visual height of the white wave area */
+   /* unitless fractions (0..1) representing the portion of the wave height used as the asset offset
+     bottom = calc(var(--rq-wave-height) * (1 - offset)) so offset=0.27 means asset bottom is at 73% of wave height */
+   --rq-left-asset-offset: 0.273; /* ~12rem / 44rem */
+   --rq-right-asset-offset: 0.273; /* ~12rem / 44rem */
+    background-image:
+      radial-gradient(80% 120% at -10% 10%, rgba(63, 129, 255, 0.45) 0%, rgba(63, 129, 255, 0) 65%),
+      radial-gradient(110% 130% at 110% 0%, rgba(108, 57, 255, 0.4) 0%, rgba(108, 57, 255, 0) 60%),
+      linear-gradient(135deg, var(--color-request-bg) 0%, #0a1b7a 65%, #162a9f 100%);
+    color: var(--color-request-heading);
+  }
+
+  .request-quote-heading {
+    color: var(--color-request-heading);
+    text-shadow: 0 10px 30px rgba(9, 12, 44, 0.35);
+  }
+
+  .request-quote-sub-heading {
+    font-family: var(--project-font);
+    font-size: clamp(1.0625rem, 2.4vw, 1.25rem);
+    line-height: 1.6;
+    color: var(--color-request-heading);
+    max-width: 44rem;
+    margin: 0 auto;
+  }
+
+  .request-quote-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: clamp(2rem, 4vw, 2.75rem);
+    max-width: min(64rem, 100%);
+    margin: 0 auto;
+  }
+
+  .request-quote-art {
+    position: absolute;
+    z-index: 8; /* place assets above the wave */
+    pointer-events: none;
+    width: clamp(18rem, 33vw, 30rem);
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 26px 62px rgba(6, 10, 55, 0.32));
+  }
+
+  .request-quote-art--left {
+    left: max(-5rem, -7vw);
+    /* Asset bottom sits relative to the top of the wave for robust alignment */
+    bottom: calc(var(--rq-wave-height) * (1 - var(--rq-left-asset-offset)));
+  }
+
+  .request-quote-art--right {
+    right: max(-5rem, -7vw);
+    /* use bottom so both assets align to the same wave reference */
+    bottom: calc(var(--rq-wave-height) * (1 - var(--rq-right-asset-offset)));
+  }
+
+  /* top-right cluster decorations */
+  .request-quote-top-decor {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 12rem;
+    height: 8rem;
+    z-index: 6;
+    pointer-events: none;
+  }
+
+  .request-quote-decor {
+    position: absolute;
+    display: block;
+    background: rgba(91, 193, 255, 0.18);
+    border-radius: 18px;
+    filter: blur(0.2px);
+  }
+
+  .request-quote-decor.decor-1 {
+    width: 58px;
+    height: 58px;
+    right: 0;
+    top: 0;
+    transform: rotate(12deg);
+    background: rgba(91, 193, 255, 0.22);
+    clip-path: polygon(50% 0%, 100% 38%, 81% 100%, 19% 100%, 0% 38%);
+  }
+
+  .request-quote-decor.decor-2 {
+    width: 42px;
+    height: 42px;
+    right: 3.5rem;
+    top: 0.75rem;
+    transform: rotate(-8deg);
+    background: rgba(126, 172, 255, 0.14);
+    clip-path: polygon(10% 0%, 100% 15%, 85% 100%, 0% 85%);
+  }
+
+  .request-quote-decor.decor-3 {
+    width: 72px;
+    height: 46px;
+    right: 2.25rem;
+    top: 2.25rem;
+    transform: rotate(6deg);
+    background: rgba(91, 193, 255, 0.16);
+    clip-path: polygon(0% 20%, 30% 0%, 100% 20%, 90% 100%, 10% 100%);
+  }
+
+  .request-quote-decor.decor-4 {
+    width: 36px;
+    height: 36px;
+    right: 5.3rem;
+    top: 3.6rem;
+    transform: rotate(18deg);
+    background: rgba(126, 172, 255, 0.18);
+    clip-path: polygon(50% 0%, 100% 35%, 82% 100%, 18% 100%, 0% 35%);
+  }
+
+  /* bottom white convex wave */
+  .request-quote-wave {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: var(--rq-wave-height); /* rise into the section; controlled by variables */
+    z-index: 0; /* keep wave behind decorative assets */
+    pointer-events: none;
+  }
+
+  /* Responsive adjustments: mobile-first then scale up */
+  @media (max-width: 640px) {
+    /* mobile-specific variable overrides (fractions) */
+    .request-quote-section {
+      --rq-wave-height: 18rem;
+      --rq-left-asset-offset: 0.36; /* ~6.5rem / 18rem */
+      --rq-right-asset-offset: 0.36; /* ~6.5rem / 18rem */
+    }
+    .request-quote-art {
+      width: clamp(10rem, 38vw, 16rem);
+    }
+
+    .request-quote-art--left {
+      left: max(-3rem, -6vw);
+      bottom: calc(var(--rq-wave-height) * (1 - var(--rq-left-asset-offset)));
+    }
+
+    .request-quote-art--right {
+      right: max(-3rem, -6vw);
+      bottom: 14rem;
+    }
+
+    .request-quote-wave {
+      height: 18rem; /* smaller wave on narrow screens */
+    }
+
+    .request-quote-top-decor {
+      top: 1rem;
+      right: 1rem;
+      width: 8.5rem;
+      height: 5.5rem;
+    }
+
+    .request-quote-decor.decor-1 { width: 44px; height:44px; right:0; top:0; }
+    .request-quote-decor.decor-2 { width: 34px; height:34px; right:2.4rem; top:0.6rem; }
+    .request-quote-decor.decor-3 { width: 56px; height:36px; right:1.6rem; top:1.8rem; }
+    .request-quote-decor.decor-4 { width: 28px; height:28px; right:3.8rem; top:2.6rem; }
+
+    .request-quote-card { padding: 1.25rem; }
+    .request-quote-inner { gap: 1.25rem; }
+  }
+
+  .request-quote-card {
+    position: relative;
+    background-color: var(--color-request-surface);
+    border-radius: 26px;
+    box-shadow:
+      0 32px 70px rgba(7, 12, 70, 0.22),
+      0 18px 30px rgba(7, 12, 70, 0.18);
+  }
+
+  .request-quote-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(140deg, rgba(80, 137, 255, 0.12), rgba(126, 72, 255, 0));
+    pointer-events: none;
+  }
+
+  .request-quote-card > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .request-quote-label {
+    font-family: var(--project-font);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-request-label);
+  }
+
+  .request-quote-input {
+    width: 100%;
+    border-radius: 18px;
+    border: 1px solid var(--color-request-border);
+    background-color: var(--color-request-input);
+    padding: 1rem 1.1rem;
+    font-family: var(--project-font);
+    font-size: 0.98rem;
+    color: var(--color-text);
+    transition: border-color 140ms ease, box-shadow 140ms ease;
+  }
+
+  .request-quote-input::placeholder {
+    color: var(--color-request-placeholder);
+  }
+
+  .request-quote-input:focus {
+    outline: none;
+    border-color: rgba(36, 111, 255, 0.65);
+    box-shadow: 0 0 0 3px rgba(36, 111, 255, 0.18);
+  }
+
+  .request-quote-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='10' viewBox='0 0 16 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 2.5L8 8L14 2.5' stroke='%23323C65' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1.25rem center;
+    background-size: 16px;
+    padding-right: 3.25rem;
+    cursor: pointer;
+  }
+
+  select.request-quote-input:invalid {
+    color: var(--color-request-placeholder);
+  }
+
+  .request-quote-attachment {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .request-quote-upload {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 1.6rem;
+    border-radius: 16px;
+    border: 1px solid var(--color-request-border);
+    background-color: transparent;
+    font-family: var(--project-font);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text);
+    transition: border-color 150ms ease, background-color 150ms ease, transform 150ms ease;
+  }
+
+  .request-quote-upload:hover {
+    border-color: rgba(36, 111, 255, 0.45);
+    background-color: rgba(36, 111, 255, 0.08);
+    transform: translateY(-1px);
+  }
+
+  .request-quote-upload:focus-visible {
+    outline: 2px solid rgba(36, 111, 255, 0.4);
+    outline-offset: 3px;
+  }
+
+  .request-quote-file-name {
+    font-family: var(--project-font);
+    font-size: 0.9rem;
+    color: var(--color-request-placeholder);
+  }
+
+  .request-quote-btn {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-request-cta);
+    color: var(--color-request-surface);
+    border-radius: 16px;
+    padding: 1.05rem 2.4rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    box-shadow: 0 18px 35px rgba(18, 39, 104, 0.28);
+  }
+
+  .request-quote-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 22px 42px rgba(18, 39, 104, 0.32);
+    background: var(--color-request-cta-hover);
+  }
+
+  .request-quote-btn:focus-visible {
+    outline: 2px solid rgba(91, 193, 255, 0.95);
+    outline-offset: 3px;
+  }
+
+  @media (min-width: 768px) {
+    /* tablet: increase wave + keep assets aligned via variables (fractions) */
+    .request-quote-section {
+      --rq-wave-height: 44rem;
+      --rq-left-asset-offset: 0.227; /* ~10rem / 44rem */
+      --rq-right-asset-offset: 0.227; /* ~10rem / 44rem */
+    }
+    .request-quote-art--left { left: -4rem; }
+    .request-quote-art--right { right: -3.5rem; }
+  }
+
+  @media (min-width: 1024px) {
+    .request-quote-art {
+      width: clamp(20rem, 28vw, 34rem);
+    }
+
+    .request-quote-section {
+      /* desktop: slightly larger wave and adjust offsets */
+      --rq-wave-height: 48rem;
+      --rq-left-asset-offset: 0.28; /* ~13.4rem / 48rem if needed */
+      --rq-right-asset-offset: 0.28;
+    }
+
+    .request-quote-wave {
+      /* larger visual wave on wide screens — use the variable */
+      height: var(--rq-wave-height);
+    }
+
+    .request-quote-top-decor {
+      top: 2.5rem;
+      right: 3rem;
+      width: 14rem;
+      height: 9rem;
+    }
+
+    .request-quote-decor.decor-1 { width: 68px; height:68px; }
+    .request-quote-decor.decor-2 { width: 48px; height:48px; }
+    .request-quote-decor.decor-3 { width: 86px; height:56px; }
+    .request-quote-decor.decor-4 { width: 44px; height:44px; }
+
+    .request-quote-card { padding: 2.5rem 3rem; }
+  }
+}
