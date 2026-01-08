@@ -112,8 +112,8 @@ const ProfileSection: React.FC = () => {
             Desven is a collective of strategists, designers, and engineers building dependable digital products that advance modern organizations. We combine research-driven insight with meticulous execution to create systems people trust.
           </motion.p>
           <motion.div className="space-y-2 text-sm" variants={fadeChild}>
-            <p>Email: <a className="text-[var(--color-primary-soft)]" href="mailto:hello@desven.com">hello@desven.com</a></p>
-            <p>Phone: <a className="text-[var(--color-primary-soft)]" href="tel:+14496864564">+44 968 645 64</a></p>
+            <p>Email: <a className="text-[var(--color-primary-soft)]" href="mailto:hello@desven.com">stephenechoda@gmail.com, abrahamdesire053@gmail.com</a></p>
+            <p>Phone: <a className="text-[var(--color-primary-soft)]" href="tel:+14496864564">+234 8168537863, +234 9018008698</a></p>
           </motion.div>
         </motion.div>
       </motion.div>
