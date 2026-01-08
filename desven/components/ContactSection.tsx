@@ -57,8 +57,8 @@ const ContactSection: React.FC = () => {
             From discovery sprints to production rollouts, Desven collaborates with your team to deliver innovative products backed by dependable engineering.
           </motion.p>
           <motion.div className="space-y-2 text-sm" variants={childVariants}>
-            <p>Email: <a className="text-[var(--color-primary-soft)]" href="mailto:team@desven.com">team@desven.com</a></p>
-            <p>Phone: <a className="text-[var(--color-primary-soft)]" href="tel:+14496864564">+44 968 645 64</a></p>
+            <p>Email: <a className="text-[var(--color-primary-soft)]" href="mailto:abrahamdesire053@gmail.com"> stephenechoda@gmail.com, abrahamdesire053@gmail.com</a></p>
+            <p>Phone: <a className="text-[var(--color-primary-soft)]" href="tel:+2349018008698"> +234 8168537863, +234 9018008698</a></p>
           </motion.div>
         </motion.div>
         <motion.form className="flex flex-1 flex-col gap-4" variants={contentVariants}>

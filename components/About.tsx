@@ -59,7 +59,7 @@ export default function About() {
           Building Reliable Partnerships That Accelerate Growth
         </h2>
         <p className="body-lead mb-4">
-          Ungozu & Sons helps organisations turn ambitious ideas into dependable digital products. From
+          Desven helps organisations turn ambitious ideas into dependable digital products. From
           custom software and IT enablement to infrastructure deployment, we combine strategy, design, and
           engineering expertise under one collaborative team.
         </p>
