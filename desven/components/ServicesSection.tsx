@@ -2,97 +2,77 @@ import React from 'react'
 import { motion, Variants } from 'framer-motion'
 import { services } from '../data'
 
+const colorMap: Record<string, string> = {
+  primary: 'text-[var(--color-primary)]',
+  secondary: 'text-[var(--color-secondary)]',
+  tertiary: 'text-[var(--color-tertiary)]'
+}
+
 const ServicesSection: React.FC = () => {
-  const viewport = { once: true, amount: 0.25 }
-  const columnVariants: Variants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.12
-      }
-    }
-  }
+  const viewport = { once: true, amount: 0.2 }
   const fadeUp: Variants = {
     hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: 'easeInOut'
-      }
-    }
-  }
-  const cardVariants: Variants = {
-    hidden: { opacity: 0, y: 32, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: 'easeInOut'
-      }
-    }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeInOut' } }
   }
   const cardsWrapper: Variants = {
     hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
+    visible: { transition: { staggerChildren: 0.12 } }
+  }
+  const cardVariants: Variants = {
+    hidden: { opacity: 0, y: 32, scale: 0.95 },
+    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: 'easeInOut' } }
   }
 
   return (
     <motion.section
       id="services"
-      className="bg-[var(--color-section)] py-20 text-[var(--color-text)]"
+      className="py-32 px-8 max-w-7xl mx-auto"
       initial="hidden"
       whileInView="visible"
       viewport={viewport}
     >
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[1fr,1.2fr]">
-        <motion.div className="space-y-6" variants={columnVariants}>
-          <motion.p className="badge-pill text-[var(--color-primary-soft)]" variants={fadeUp}>
+      <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+        <motion.div className="max-w-2xl" variants={fadeUp}>
+          <h2 className="text-[var(--color-secondary)] font-bold tracking-widest uppercase text-xs mb-4">
+            Core Expertise
+          </h2>
+          <h3 className="font-headline text-4xl md:text-6xl font-extrabold tracking-tighter">
             What Desven Delivers
-          </motion.p>
-          <motion.h2 className="text-[var(--size-h1)] font-bold leading-tight" variants={fadeUp}>
-            End-to-end product strategy and engineering
-          </motion.h2>
-          <motion.p className="text-lg text-[var(--color-text-muted)]" variants={fadeUp}>
-            Desven partners with teams to transform ambitious ideas into resilient digital platforms that inspire confidence and scale with demand.
-          </motion.p>
-          <motion.a
-            href="#projects"
-            className="inline-flex items-center justify-center rounded-full bg-[var(--color-primary)] px-5 py-3 text-sm font-semibold text-[var(--color-text-on-light)] shadow-[0_12px_30px_var(--color-shadow)]"
-            variants={fadeUp}
-          >
-            View All Services
-          </motion.a>
+          </h3>
         </motion.div>
-        <motion.div
-          className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewport}
-          variants={cardsWrapper}
-        >
-          {services.map((service) => (
-            <motion.article
-              key={service.title}
-              className="col-span-1 rounded-[var(--radius-lg)] border border-[var(--color-card-border)]/60 bg-[var(--color-card)] p-6 shadow-[0_12px_40px_rgba(0,0,0,0.35)]"
-              variants={cardVariants}
-            >
-              <h3 className="mb-3 text-lg font-semibold text-[color:var(--color-text)]">{service.title}</h3>
-              <p className="mb-4 text-sm text-[var(--color-text-muted)]">{service.description}</p>
-              <a className="text-sm font-semibold text-[var(--color-primary-soft)]" href="#contact">
-                {service.cta} →
-              </a>
-            </motion.article>
-          ))}
-        </motion.div>
+        <motion.p className="text-[var(--color-text-muted)] max-w-md text-lg" variants={fadeUp}>
+          Comprehensive solutions from conceptualization to global-scale deployment, bridging the gap between
+          imagination and execution.
+        </motion.p>
       </div>
+      <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-8" variants={cardsWrapper}>
+        {services.map((service) => (
+          <motion.div
+            key={service.title}
+            className="glass-card p-12 rounded-xl group hover:bg-[var(--color-surface-bright)] transition-all duration-500 border border-transparent hover:border-[var(--color-outline-variant)]/20"
+            variants={cardVariants}
+          >
+            <span
+              className={`material-symbols-outlined text-4xl ${colorMap[service.color]} mb-8`}
+              style={{ fontVariationSettings: "'FILL' 1" }}
+            >
+              {service.icon}
+            </span>
+            <h4 className="text-2xl font-bold mb-4 font-headline">{service.title}</h4>
+            <p className="text-[var(--color-text-muted)] mb-8 font-light">{service.description}</p>
+            <div className="flex flex-wrap gap-2">
+              {service.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1 bg-[var(--color-surface-container-highest)] rounded text-[10px] uppercase font-bold tracking-widest text-[var(--color-outline)]"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
     </motion.section>
   )
 }

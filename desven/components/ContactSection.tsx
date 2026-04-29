@@ -2,99 +2,88 @@ import React from 'react'
 import { motion, Variants } from 'framer-motion'
 
 const ContactSection: React.FC = () => {
-  const viewport = { once: true, amount: 0.3 }
-  const wrapperVariants: Variants = {
+  const viewport = { once: true, amount: 0.2 }
+  const fadeUp: Variants = {
     hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: 'easeInOut'
-      }
-    }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeInOut' } }
   }
-  const contentVariants: Variants = {
+  const stagger: Variants = {
     hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.12
-      }
-    }
-  }
-  const childVariants: Variants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.55,
-        ease: 'easeInOut'
-      }
-    }
+    visible: { transition: { staggerChildren: 0.1 } }
   }
 
   return (
     <motion.section
       id="contact"
-      className="bg-[var(--color-card)] py-20 text-[var(--color-text)]"
+      className="py-48 px-8 bg-[var(--color-surface-container-low)] relative overflow-hidden"
       initial="hidden"
       whileInView="visible"
       viewport={viewport}
     >
-      <motion.div
-        className="mx-auto flex max-w-5xl flex-col gap-10 rounded-[var(--radius-xl)] border border-[var(--color-card-border)]/60 bg-[var(--color-section)] px-8 py-10 shadow-[0_20px_60px_rgba(0,0,0,0.4)] lg:flex-row"
-        variants={wrapperVariants}
-      >
-        <motion.div className="flex-1 space-y-4" variants={contentVariants}>
-          <motion.p className="badge-pill text-[var(--color-primary-soft)]" variants={childVariants}>
-            Partner with Desven
-          </motion.p>
-          <motion.h2 className="text-[var(--size-h2)] font-bold leading-tight" variants={childVariants}>
-            Let's launch your next digital initiative
-          </motion.h2>
-          <motion.p className="text-[var(--color-text-muted)]" variants={childVariants}>
-            From discovery sprints to production rollouts, Desven collaborates with your team to deliver innovative products backed by dependable engineering.
-          </motion.p>
-          <motion.div className="space-y-2 text-sm" variants={childVariants}>
-            <p>Email: <a className="text-[var(--color-primary-soft)]" href="mailto:abrahamdesire053@gmail.com"> stephenechoda@gmail.com, abrahamdesire053@gmail.com</a></p>
-            <p>Phone: <a className="text-[var(--color-primary-soft)]" href="tel:+2349018008698"> +234 8168537863, +234 9018008698</a></p>
-          </motion.div>
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[var(--color-primary)]/30 to-transparent" />
+
+      <div className="max-w-4xl mx-auto text-center relative z-10">
+        <motion.h2
+          className="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter mb-12"
+          variants={fadeUp}
+        >
+          Let's launch your next{' '}
+          <span className="text-[var(--color-secondary)] italic">digital initiative</span>
+        </motion.h2>
+
+        <motion.div
+          className="glass-card p-8 md:p-12 rounded-2xl text-left border border-white/5"
+          variants={fadeUp}
+        >
+          <motion.form className="grid grid-cols-1 md:grid-cols-2 gap-8" variants={stagger}>
+            <motion.div className="space-y-2" variants={fadeUp}>
+              <label className="text-[10px] uppercase tracking-widest font-bold text-[var(--color-text-muted)]">
+                Name
+              </label>
+              <input
+                className="w-full bg-[var(--color-surface-container-low)] border-b border-[var(--color-outline-variant)]/30 focus:border-[var(--color-secondary)] px-0 py-4 text-white placeholder:text-[var(--color-outline-variant)]/50 transition-all outline-none"
+                placeholder="John Doe"
+                type="text"
+              />
+            </motion.div>
+            <motion.div className="space-y-2" variants={fadeUp}>
+              <label className="text-[10px] uppercase tracking-widest font-bold text-[var(--color-text-muted)]">
+                Email
+              </label>
+              <input
+                className="w-full bg-[var(--color-surface-container-low)] border-b border-[var(--color-outline-variant)]/30 focus:border-[var(--color-secondary)] px-0 py-4 text-white placeholder:text-[var(--color-outline-variant)]/50 transition-all outline-none"
+                placeholder="john@company.com"
+                type="email"
+              />
+            </motion.div>
+            <motion.div className="md:col-span-2 space-y-2" variants={fadeUp}>
+              <label className="text-[10px] uppercase tracking-widest font-bold text-[var(--color-text-muted)]">
+                Project Scope
+              </label>
+              <textarea
+                className="w-full bg-[var(--color-surface-container-low)] border-b border-[var(--color-outline-variant)]/30 focus:border-[var(--color-secondary)] px-0 py-4 text-white placeholder:text-[var(--color-outline-variant)]/50 transition-all outline-none resize-none"
+                placeholder="Tell us about your project..."
+                rows={3}
+              />
+            </motion.div>
+            <motion.div
+              className="md:col-span-2 flex flex-col md:flex-row items-center justify-between gap-8 pt-8"
+              variants={fadeUp}
+            >
+              <p className="text-[var(--color-text-muted)] text-sm font-light">
+                By submitting this form, you agree to our Privacy Policy.
+              </p>
+              <button
+                type="submit"
+                className="w-full md:w-auto bg-[var(--color-primary)] text-[var(--color-on-primary)] font-bold px-12 py-4 rounded-lg hover:bg-[var(--color-primary-dim)] transition-all flex items-center justify-center gap-3"
+              >
+                Book a Call
+                <span className="material-symbols-outlined">call</span>
+              </button>
+            </motion.div>
+          </motion.form>
         </motion.div>
-        <motion.form className="flex flex-1 flex-col gap-4" variants={contentVariants}>
-          <motion.label className="text-sm font-semibold" htmlFor="name" variants={childVariants}>Name</motion.label>
-          <motion.input
-            id="name"
-            type="text"
-            className="rounded-[var(--radius-md)] border border-[var(--color-card-border)] bg-[var(--color-card)] px-4 py-3 text-[color:var(--color-text)] focus:border-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/40"
-            placeholder="Your name"
-            variants={childVariants}
-          />
-          <motion.label className="text-sm font-semibold" htmlFor="email" variants={childVariants}>Email</motion.label>
-          <motion.input
-            id="email"
-            type="email"
-            className="rounded-[var(--radius-md)] border border-[var(--color-card-border)] bg-[var(--color-card)] px-4 py-3 text-[color:var(--color-text)] focus:border-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/40"
-            placeholder="you@company.com"
-            variants={childVariants}
-          />
-          <motion.label className="text-sm font-semibold" htmlFor="message" variants={childVariants}>Message</motion.label>
-          <motion.textarea
-            id="message"
-            rows={4}
-            className="rounded-[var(--radius-md)] border border-[var(--color-card-border)] bg-[var(--color-card)] px-4 py-3 text-[color:var(--color-text)] focus:border-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/40"
-            placeholder="Tell us about your goals"
-            variants={childVariants}
-          />
-          <motion.button
-            type="submit"
-            className="mt-2 inline-flex items-center justify-center rounded-full bg-[var(--color-primary)] px-6 py-3 text-sm font-semibold text-[var(--color-text-on-light)] shadow-[0_15px_40px_var(--color-shadow)] transition hover:scale-[1.01]"
-            variants={childVariants}
-          >
-            Send Message
-          </motion.button>
-        </motion.form>
-      </motion.div>
+      </div>
     </motion.section>
   )
 }

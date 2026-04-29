@@ -7,30 +7,32 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
   return (
-    <header className="sticky top-0 z-40 backdrop-blur bg-[rgba(17,11,6,0.8)] text-[color:var(--color-text)] border-b border-[var(--color-card-border)]/40">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a className="text-xl font-semibold tracking-tight" href="#hero">
-          Desven
-        </a>
-        <nav className="hidden gap-8 text-sm uppercase tracking-[0.24em] text-[var(--color-text-muted)] md:flex">
-          {navItems.map((item) => (
+    <nav className="fixed top-0 w-full z-50 border-b border-white/5 bg-[#0e0e0e]/60 backdrop-blur-md">
+      <div className="flex justify-between items-center px-8 py-4 max-w-full mx-auto">
+        <div className="text-2xl font-black tracking-tighter text-white font-headline">Desven</div>
+        <div className="hidden md:flex gap-10 items-center">
+          {navItems.map((item, idx) => (
             <button
               key={item.id}
-              className="transition-colors hover:text-[color:var(--color-text)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary-soft)]"
+              className={`uppercase tracking-widest text-xs font-medium transition-colors duration-300 ${
+                idx === 0
+                  ? 'text-[var(--color-primary)] font-bold border-b-2 border-[var(--color-primary)] pb-1'
+                  : 'text-[var(--color-text-muted)] hover:text-[var(--color-secondary)]'
+              }`}
               onClick={() => onNavigate?.(item.id)}
             >
               {item.label}
             </button>
           ))}
-        </nav>
-        <a
-          className="hidden rounded-full bg-[var(--color-primary)] px-4 py-2 text-sm font-semibold text-[var(--color-text-on-light)] shadow-[0_10px_30px_var(--color-shadow)] transition hover:scale-[1.02] hover:shadow-[0_12px_36px_var(--color-shadow)] md:inline-flex"
-          href="#contact"
+        </div>
+        <button
+          className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-container)] text-[var(--color-on-primary-container)] px-6 py-2.5 font-bold rounded hover:opacity-90 transition-all duration-200 active:scale-[0.98]"
+          onClick={() => onNavigate?.('contact')}
         >
-          Book a Call
-        </a>
+          Start a Project
+        </button>
       </div>
-    </header>
+    </nav>
   )
 }
 

@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;700;800&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
 @import "tailwindcss";
 @import './styles/design-tokens.css';
 @import './styles/desven-tokens.css';
@@ -41,16 +42,48 @@
   --shadow-brand-md: 0 10px 30px rgba(3, 6, 50, 0.12);
 }
 
-/* Utility class for Alfa Slab One font */
+/* Utility class for headline font */
 
-.alfa-slab-one-regular {
-  font-family: "Alfa Slab One", serif;
-  font-weight: 400;
-  font-style: normal;
+.font-headline {
+  font-family: "Manrope", sans-serif;
+}
+
+.font-body {
+  font-family: "Inter", sans-serif;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.glass-card {
+  background: rgba(26, 25, 25, 0.4);
+  backdrop-filter: blur(20px);
+}
+
+.ambient-glow-primary {
+  box-shadow: 0 0 64px 0 rgba(186, 158, 255, 0.06);
+}
+
+.bg-grid {
+  background-image: radial-gradient(circle, #494847 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.05;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
 }
 
 html, body {
-  font-family: "Alfa Slab One", serif;
+  font-family: "Inter", sans-serif;
+  background-color: #0e0e0e;
+  color: #ffffff;
 }
 
 
